@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,46 @@ namespace VkHistoryStat
     }
     class Program
     {
+        private static string[] test =
+        {
+            "ТВОЙ",
+            "ЛАБЫ",
+            "ЕМУ",
+            "СКАЗАЛА",
+            "ОДНА",
+            "Т",
+            "НАПИСАНО",
+            "40",
+            "THE",
+            "ЧАСА",
+            "ЕХАТЬ",
+            "ТЕЛЕФОН",
+            "НОРМАЛЬНО",
+            "СЕРЬЕЗНО",
+            "МОЙ",
+            "ORG",
+            "14",
+            "ОНО",
+            "ЭТА",
+            "ВСЁ",
+            "ПРИЕЗЖАЙ",
+            "МОЛОДЕЦ",
+            "СМОТРЮ",
+            "ПРИЕДЕШЬ",
+            "ТИПА",
+            "КАКОГО",
+            "ПОЗЖЕ",
+            "КОТОРЫЙ",
+            "КАКОЕ",
+            "LOL",
+            "18",
+            "00",
+            "19",
+            "СРАЗУ",
+            "КУПИЛ",
+            "ЗНАЕШЬ",
+            "ЧУДНО"
+        };
         static Dictionary<string, int> myDict = new Dictionary<string, int>();
         static Dictionary<string, int> userDict = new Dictionary<string, int>();
         static Regex reg = new Regex(@"[\wёЁ]+", RegexOptions.Compiled);
@@ -32,12 +74,13 @@ namespace VkHistoryStat
 
         static void Main(string[] args)
         {
-            
+            var y1y = MyStemWorker.MyStemConvert(test);
+
             var redirect_uri = Token.GetOAuthURL(
                     5390280,    
                     Permission.Messages 
                     );
-            var token = new Token("9c6ce2565ec762ca63072575055c7f4a3965765aa1ca144d4ac2ca8218472b1603a03f515351fa2ffe5e2");
+            var token = new Token("8501d914fb2dab6f4a440b63b4f1f4880f7d779449cade3bb21151e1a8683ef72a13da212069902618dfb");
             var api = new RawApi();
             api.AddToken(token);
 
